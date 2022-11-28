@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
 
   <!-- set parent pom to community pom -->
@@ -10,11 +9,75 @@
     <version>2.22.0</version>
   </parent>
 
-  <groupId>org.geoserver</groupId>
-  <artifactId>hello</artifactId>
-  <version>1.0</version>
+  <groupId>com.turnertech</groupId>
+  <artifactId>martin</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>Hello World Service Module</name>
+
+  <name>Martin</name>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <inceptionYear>2022</inceptionYear>
+
+  <organization>
+    <name>TurnerTech</name>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>liturner</id>
+      <name>Luke Ian Turner</name>
+      <email>turnertech@outlook.de</email>
+      <organization>TurnerTech</organization>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <system>Azure DevOps</system>
+    <url>https://dev.azure.com/TurnerTech/Martin</url>
+  </issueManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
+    <sonar.java.source>17</sonar.java.source>
+    <downloadSources>true</downloadSources>
+		<downloadJavadocs>true</downloadJavadocs>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+              <includeScope>compile</includeScope>
+              <includeScope>provided</includeScope>
+              <includeScope>runtime</includeScope>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <!-- declare dependency on geoserver main -->
   <dependencies>
@@ -32,7 +95,7 @@
       </snapshots>
       <id>OSGeo</id>
       <name>OSGeo Repository</name>
-      <url></url>
+      <url>https://repo.osgeo.org/repository/release/</url>
     </repository>
   </repositories>
 
