@@ -15,34 +15,23 @@ The Javadoc is available as a zip to download alongside each release. For exampl
 # Crumb Trail for Starting Out
 
 1. \src\web\app\src\main\webapp\WEB-INF\web.xml -> The listeners point to some classes which appear to be the main software
-2. <!-- general initializer, should be first thing to execute -->
-    <listener>
-      <listener-class>org.geoserver.GeoserverInitStartupListener</listener-class>
-    </listener>
-    
-    <!-- logging initializer, should execute before spring context startup -->
-    <listener>
-      <listener-class>org.geoserver.logging.LoggingStartupContextListener</listener-class>
-    </listener>
-  
-    <!--  spring context loader -->
-    <listener>
-      <listener-class>org.geoserver.platform.GeoServerContextLoaderListener</listener-class>
-    </listener>
-    
-    <!--  http session listener proxy -->
-    <listener>
-      <listener-class>org.geoserver.platform.GeoServerHttpSessionListenerProxy</listener-class>
-    </listener>
+      org.geoserver.GeoserverInitStartupListener
+      org.geoserver.logging.LoggingStartupContextListener
+      org.geoserver.platform.GeoServerContextLoaderListener
+      org.geoserver.platform.GeoServerHttpSessionListenerProxy
+      org.springframework.web.context.request.RequestContextListener
 
-	<!-- request context listener for session-scoped beans -->
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
+2. gs-wfs seems to be the actuall implementation of WFS. \src\wfs\src\main\java\org\geoserver\wfs\WebFeatureService.java should be a good place to trace back from
+
+3. Following Classes seem to be core elements:
+      org.geoserver.catalog.Catalog; (Holds all the data)
+      org.geoserver.config.GeoServer; (Geoserver Configuration)
 
 # Dependency Layers
 
 gs-web-app (we dont want this, or we want to minimize it)
+
+gs-wfs (This could be the servlet we need!!!!!)
 
 gs-main (this seems to be the core Java stuff)
 
