@@ -27,6 +27,19 @@ The Javadoc is available as a zip to download alongside each release. For exampl
       org.geoserver.catalog.Catalog; (Holds all the data)
       org.geoserver.config.GeoServer; (Geoserver Configuration)
 
+4. From WFSTestSupport.java
+    protected WFSInfo getWFS() {
+        return getGeoServer().getService(WFSInfo.class);
+    }
+
+5. **IMPORTANT** https://stackoverflow.com/questions/30825612/geoserver-develop-or-use-how-can-i-integrate-with-geoserver 
+
+6. **IMPORTANT** Check out GeoTools. It is mentioned as a good way to have a data backend
+
+7. Nice hint about Catalog here: https://docs.geotools.org/latest/userguide/welcome/geoserver.html
+
+8. Geotools / WebCahche here: https://docs.geoserver.org/stable/en/developer/quickstart/intellij.html
+
 # Dependency Layers
 
 gs-web-app (we dont want this, or we want to minimize it)
@@ -36,3 +49,7 @@ gs-wfs (This could be the servlet we need!!!!!)
 gs-main (this seems to be the core Java stuff)
 
 gs-ows, gs-platform
+
+# Our Contribution
+
+- https://stackoverflow.com/questions/74688117/how-can-i-run-geoserver-without-the-web-frontend
